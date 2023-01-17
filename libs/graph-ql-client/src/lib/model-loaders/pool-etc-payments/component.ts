@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {map} from 'rxjs';
 import {ApolloAngularSDK} from '../../graph-ql.service';
 import {ModelViewerComponent} from '../components';

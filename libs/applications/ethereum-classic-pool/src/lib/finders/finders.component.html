@@ -1,0 +1,14 @@
+<nz-layout>
+  <nz-page-header>
+    <nz-page-header-title>Finders</nz-page-header-title>
+  </nz-page-header>
+  <nz-layout>
+    <nz-card [nzBordered]="false">
+      <ldr-pool-etc-finders>
+        <ng-template poolEtcFinders let-data>
+          <grid [rowData]="data.finders" [columnDefs]="dataColDef"></grid>
+        </ng-template>
+      </ldr-pool-etc-finders>
+    </nz-card>
+  </nz-layout>
+</nz-layout>

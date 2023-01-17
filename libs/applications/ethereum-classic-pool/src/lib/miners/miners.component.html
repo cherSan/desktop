@@ -1,3 +1,29 @@
-<nz-page-header>
-  <nz-page-header-title>Miners</nz-page-header-title>
-</nz-page-header>
+<nz-layout>
+  <nz-page-header>
+    <nz-page-header-title>Miners</nz-page-header-title>
+  </nz-page-header>
+  <nz-layout>
+    <nz-card [nzBordered]="false">
+      <ldr-pool-etc-miners>
+        <ng-template poolEtcMiners let-data>
+          <nz-descriptions nzBordered [nzSize]="'small'" [nzColumn]="{'xs': 1, 'sm': 1, 'md': 3, 'lg': 3, 'xl': 3, 'xxl': 3}">
+            <nz-descriptions-item nzTitle="Total Hashrate">{{data.hashrate | siSymbol: 'H/s'}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Total Miners">{{data.minersTotal}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Last update">{{data.now | moment}}</nz-descriptions-item>
+          </nz-descriptions>
+        </ng-template>
+      </ldr-pool-etc-miners>
+    </nz-card>
+    <nz-card [nzBordered]="false">
+      <ldr-pool-etc-miners>
+        <ng-template poolEtcMiners let-data>
+          <grid
+            [rowData]="data?.miners"
+            [columnDefs]="columnDefs"
+            (rowClick)="onRowClick($event)"
+          ></grid>
+        </ng-template>
+      </ldr-pool-etc-miners>
+    </nz-card>
+  </nz-layout>
+</nz-layout>

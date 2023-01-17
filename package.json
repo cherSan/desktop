@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "generate:graph-ql-client": "nx run graph-ql-client:generate",
     "server:serve": "nx run server:serve",
+    "generate:graph-ql-client": "nx run graph-ql-client:generate",
     "fe-client:serve": "nx run fe-client:serve"
   },
   "private": true,

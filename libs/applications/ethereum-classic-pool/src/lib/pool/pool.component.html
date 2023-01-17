@@ -1,25 +1,57 @@
-<nz-page-header>
-  <nz-page-header-title>Pool</nz-page-header-title>
-</nz-page-header>
-<div class="container">
-  <nz-card
-    [nzBordered]="false"
-  >
-    <ldr-pool-etc-stats>
-      <ng-template let-data poolEtcStats>
-        <div nz-card-grid>
-          <nz-statistic [nzValue]="(data.hashrate | number)!" [nzTitle]="'Hashrate'"></nz-statistic>
-        </div>
-        <div nz-card-grid>
-          <nz-statistic [nzValue]="(data.epoch | number: '1.0-0') + ' / ' + (data.dagSize | number)" [nzTitle]="'Epoch / DAG size'"></nz-statistic>
-        </div>
-
-      </ng-template>
-    </ldr-pool-etc-stats>
-    <ldr-pool-etc-stats>
-      <ng-template let-data poolEtcStats>
-        <chart [options]="data | poolInformationChart"></chart>
-      </ng-template>
-    </ldr-pool-etc-stats>
-  </nz-card>
-</div>
+<nz-layout>
+  <nz-page-header>
+    <nz-page-header-title>Pool</nz-page-header-title>
+  </nz-page-header>
+  <nz-layout>
+    <nz-card [nzBordered]="false">
+      <ldr-pool-etc-stats>
+        <ng-template let-data poolEtcStats>
+          <div nz-card-grid>
+            <nz-statistic [nzValue]="(data.minersTotal | number: '1.0-0')!" [nzTitle]="'Miners Online'"></nz-statistic>
+          </div>
+          <div nz-card-grid>
+            <nz-statistic [nzValue]="(data.hashrate | number)!" [nzTitle]="'Pool Hash Rate'"></nz-statistic>
+          </div>
+          <div nz-card-grid>
+            <nz-statistic [nzValue]="(data.stats.lastBlockFound | momentDiff)!" [nzTitle]="'Last Block Found'"></nz-statistic>
+          </div>
+          <div nz-card-grid>
+            <nz-statistic [nzTitle]="'Block time (Avg.)'" [nzValue]="(data.bestNode.blocktime | number: '1.2-2') || '0'"></nz-statistic>
+          </div>
+          <div nz-card-grid>
+            <nz-statistic [nzTitle]="'Pool Luck'" [nzValue]="(data.poolLuck | percent: '1.0-0') || '0'"></nz-statistic>
+          </div>
+          <div nz-card-grid>
+            <nz-statistic [nzValue]="(data.epoch | number: '1.0-0') + ' / ' + (data.dagSize | number: '1.2-2')" [nzTitle]="'Epoch / DAG size'"></nz-statistic>
+          </div>
+        </ng-template>
+      </ldr-pool-etc-stats>
+    </nz-card>
+    <nz-card [nzBordered]="false">
+      <ldr-pool-etc-stats>
+        <ng-template poolEtcStats let-data>
+          <nz-collapse [nzBordered]="true" [nzAccordion]="true">
+            <nz-collapse-panel [nzActive]="true" *ngFor="let node of data!.nodes; trackBy:tracker" [nzHeader]="(node.name | titlecase) + ' Node'" [nzExtra]="extraTpl">
+              <ng-template #extraTpl>
+                <span nz-icon nzType="star" nzTheme="outline"></span>
+              </ng-template>
+              <nz-descriptions [nzColumn]="1" [nzBordered]="true" [nzSize]="'small'">
+                <nz-descriptions-item nzTitle="Network Difficulty">{{ node.difficulty | siSymbol: '': 3 }}</nz-descriptions-item>
+                <nz-descriptions-item nzTitle="Network Hash Rate">{{ node.hashrate | siSymbol: 'H/s' }}</nz-descriptions-item>
+                <nz-descriptions-item nzTitle="Blockchain Height">{{ node.height | number }}</nz-descriptions-item>
+                <nz-descriptions-item nzTitle="Avg Block Time">{{ node.blocktime | number: '1.2-2' }} s</nz-descriptions-item>
+              </nz-descriptions>
+            </nz-collapse-panel>
+          </nz-collapse>
+        </ng-template>
+      </ldr-pool-etc-stats>
+    </nz-card>
+    <nz-card [nzBordered]="false">
+      <ldr-pool-etc-stats>
+        <ng-template let-data poolEtcStats>
+          <chart [options]="data | poolInformationChart"></chart>
+        </ng-template>
+      </ldr-pool-etc-stats>
+    </nz-card>
+  </nz-layout>
+</nz-layout>

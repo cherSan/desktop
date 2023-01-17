@@ -1,0 +1,17 @@
+<nz-layout>
+  <nz-page-header>
+    <nz-page-header-title>Payments</nz-page-header-title>
+  </nz-page-header>
+  <nz-layout>
+    <nz-card [nzBordered]="false">
+      <ldr-pool-etc-payments>
+        <ng-template poolEtcPayments let-data>
+          <grid
+            [rowData]="data.payments"
+            [columnDefs]="columnDef"
+          ></grid>
+        </ng-template>
+      </ldr-pool-etc-payments>
+    </nz-card>
+  </nz-layout>
+</nz-layout>

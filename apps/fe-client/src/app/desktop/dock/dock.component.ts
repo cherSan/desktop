@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {DesktopService} from "../desktop.service";
 import {ApplicationManifest} from "@miner/applications";
@@ -11,7 +11,8 @@ type ApplicationDock = ApplicationManifest & {
 @Component({
   selector: 'cl-dock',
   templateUrl: './dock.component.html',
-  styleUrls: ['./dock.component.scss']
+  styleUrls: ['./dock.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DockComponent {
   public applications: ApplicationDock[] = [];

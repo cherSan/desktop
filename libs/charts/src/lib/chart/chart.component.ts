@@ -8,11 +8,10 @@ import { AgChartOptions, time } from "ag-charts-community";
 export class ChartComponent {
   private defaultOptions: AgChartOptions = {
     background: {
-      visible: true,
-      fill: '#fff'
+      visible: false
     },
     theme: {
-      baseTheme: 'ag-vivid-dark',
+      baseTheme: 'ag-default',
       overrides: {
         column: {
           navigator: { enabled: true },

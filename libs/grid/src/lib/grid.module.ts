@@ -18,7 +18,6 @@ import {NzButtonModule} from "ng-zorro-antd/button";
     NzStatisticModule,
     AgGridModule,
     NzButtonModule
-
   ],
   exports: [
     GridComponent,

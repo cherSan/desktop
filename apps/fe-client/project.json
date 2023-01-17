@@ -30,6 +30,8 @@
         ],
         "styles": [
           "node_modules/ng-zorro-antd/resizable/style/entry.less",
+          "node_modules/ag-grid-community/styles/ag-grid.css",
+          "node_modules/ag-grid-community/styles/ag-theme-balham.css",
           "apps/fe-client/src/styles.less"
         ],
         "scripts": []

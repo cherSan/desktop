@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {DesktopService} from "../desktop.service";
 import {ApplicationsService} from "../../applications/applications.service";
 import {ApplicationManifest} from "@miner/applications";
@@ -7,6 +7,7 @@ import {ApplicationManifest} from "@miner/applications";
   selector: 'cl-desktop',
   templateUrl: './desktop.component.html',
   styleUrls: ['./desktop.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [DesktopService]
 })
 export class DesktopComponent {

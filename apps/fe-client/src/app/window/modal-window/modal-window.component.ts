@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {ActivatedRoute, Data} from "@angular/router";
 import {Observable} from "rxjs";
 import {animate, style, transition, trigger} from "@angular/animations";
@@ -10,6 +10,7 @@ import {ApplicationManifest} from "@miner/applications";
   selector: 'cl-modal-window',
   templateUrl: './modal-window.component.html',
   styleUrls: ['./modal-window.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger(
       'enterAnimation', [

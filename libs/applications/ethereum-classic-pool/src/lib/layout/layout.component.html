@@ -15,28 +15,24 @@
       <span nz-icon nzTheme="outline" nzType="cluster"></span>
       Pool
     </a>
-    <router-outlet></router-outlet>
   </nz-tab>
   <nz-tab>
     <a *nzTabLink [relativeTo]="relativeTo" [routerLink]="['blocks']" nz-tab-link>
       <span nz-icon nzTheme="outline" nzType="block"></span>
       Blocks
     </a>
-    <router-outlet></router-outlet>
   </nz-tab>
   <nz-tab>
     <a *nzTabLink [relativeTo]="relativeTo" [routerLink]="['payments']" nz-tab-link>
       <span nz-icon nzTheme="outline" nzType="dollar"></span>
       Payments
     </a>
-    <router-outlet></router-outlet>
   </nz-tab>
   <nz-tab>
     <a *nzTabLink [relativeTo]="relativeTo" [routerLink]="['miners']" nz-tab-link>
       <span nz-icon nzTheme="outline" nzType="team"></span>
       Miners
     </a>
-    <router-outlet></router-outlet>
   </nz-tab>
   <nz-tab>
     <a *nzTabLink [relativeTo]="relativeTo" [routerLink]="['finders']" nz-tab-link>
@@ -45,4 +41,6 @@
     </a>
   </nz-tab>
 </nz-tabset>
-
+<div>
+  <router-outlet></router-outlet>
+</div>

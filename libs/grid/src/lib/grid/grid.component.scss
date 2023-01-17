@@ -1,13 +1,7 @@
 :host {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
   position: relative;
-
-  .grid {
-    flex: 1 1 100%;
-  }
 
   nz-card {
     &::ng-deep {

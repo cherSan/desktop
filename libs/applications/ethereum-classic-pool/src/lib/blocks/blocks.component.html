@@ -1,0 +1,35 @@
+<nz-layout>
+  <nz-page-header>
+    <nz-page-header-title>Pool Blocks</nz-page-header-title>
+  </nz-page-header>
+  <nz-layout>
+    <nz-card [nzBordered]="false">
+      <ldr-pool-etc-blocks>
+        <ng-template poolEtcBlocks let-data>
+          <chart [options]="data | chartPoolEtcBlocksOptions"></chart>
+        </ng-template>
+      </ldr-pool-etc-blocks>
+    </nz-card>
+    <nz-card [nzBordered]="false">
+      <ldr-pool-etc-blocks>
+        <ng-template poolEtcBlocks let-data>
+          <grid [rowData]="data.luck" [columnDefs]="dataLuckColDef"></grid>
+        </ng-template>
+      </ldr-pool-etc-blocks>
+    </nz-card>
+    <nz-card [nzBordered]="false" [nzTitle]="'Matured'">
+      <ldr-pool-etc-blocks>
+        <ng-template poolEtcBlocks let-data>
+          <grid [rowData]="data.matured || []" [columnDefs]="dataColDef"></grid>
+        </ng-template>
+      </ldr-pool-etc-blocks>
+    </nz-card>
+    <nz-card [nzBordered]="false" [nzTitle]="'Immature'">
+      <ldr-pool-etc-blocks>
+        <ng-template poolEtcBlocks let-data>
+          <grid [rowData]="data.immature || []" [columnDefs]="dataColDef"></grid>
+        </ng-template>
+      </ldr-pool-etc-blocks>
+    </nz-card>
+  </nz-layout>
+</nz-layout>

@@ -32,4 +32,6 @@ export type ApplicationManifest = ApplicationManifestWindow | ApplicationManifes
 export const applicationsManifests: ApplicationManifest[] = [
   programsManifest,
   ethereumClassicManifest,
+  {...ethereumClassicManifest, id: 't1'},
+  {...ethereumClassicManifest, id: 't2'},
 ]
