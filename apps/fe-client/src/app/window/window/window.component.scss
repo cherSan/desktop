@@ -4,7 +4,7 @@
   &.fullscreen {
     width: 100% !important;
     height: 100% !important;
-    transform: translate3d(0,0,0) !important;
+    transform: translate3d(0, 0, 0) !important;
   }
 
   &.active {
@@ -18,6 +18,7 @@
     }
   }
 }
+
 .window-container {
   display: flex;
   flex-direction: column;
@@ -25,12 +26,14 @@
   width: 100%;
   color: #333;
   transition: .5s;
-  box-shadow: 0 0 1px 1px rgba(255,255,255,.3);
+  box-shadow: 0 0 1px 1px rgba(255, 255, 255, .3);
   border: 2px solid rgb(48, 48, 48, .3);
+
   &:hover {
     border: 2px solid rgb(48, 48, 48, .6);
   }
 }
+
 [cdkDragHandle] {
   background: rgba(48, 48, 48, .9);
   color: #fff;
@@ -40,7 +43,8 @@
   grid-template-columns: minmax(100px, auto) minmax(60px, auto);
   grid-gap: 30px;
   padding: 0 4px;
-  box-shadow: 0 4px 4px 1px rgba(48,48,48,.9);
+  box-shadow: 0 4px 4px 1px rgba(48, 48, 48, .9);
+
   .window-header--title {
     padding-right: 10px;
     overflow: hidden;
@@ -55,14 +59,17 @@
     justify-self: end;
   }
 }
+
 .window-content {
   flex: 1;
   background: #fff;
   height: 100%;
   overflow: hidden;
 }
+
 button {
   color: rgba(200, 200, 200, .3);
+
   &:hover {
     color: rgba(200, 200, 200, .9);
   }
@@ -71,7 +78,7 @@ button {
 .hide {
   position: fixed;
   color: #fff;
-  box-shadow: 0 0 1px 1px rgba(255,255,255,.3);
+  box-shadow: 0 0 1px 1px rgba(255, 255, 255, .3);
   border: 2px solid rgb(48, 48, 48, .3);
   background: rgba(48, 48, 48, .9);
   width: 140px;

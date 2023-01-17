@@ -16,6 +16,10 @@
     "baseUrl": ".",
     "paths": {
       "@miner/applications": ["libs/applications/src/index.ts"],
+      "@miner/charts": ["libs/charts/src/index.ts"],
+      "@miner/graph-ql-client": ["libs/graph-ql-client/src/index.ts"],
+      "@miner/grid": ["libs/grid/src/index.ts"],
+      "@miner/pipes": ["libs/pipes/src/index.ts"],
       "applications/etherenum-classic-pool": [
         "libs/applications/etherenum-classic-pool/src/index.ts"
       ],

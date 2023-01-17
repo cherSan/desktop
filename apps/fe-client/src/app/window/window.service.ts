@@ -13,6 +13,7 @@ type ChangePosition = {
 };
 type Size = { width?: number, height?: number };
 type Url = [boolean, number, number, number, number, number]
+
 @Injectable()
 export class WindowService {
   public readonly name: string;
@@ -34,6 +35,7 @@ export class WindowService {
   public readonly height$ = this.heightValue$.asObservable();
   private readonly zIndexValue$: BehaviorSubject<number> = new BehaviorSubject<number>(200);
   public readonly zIndex$ = this.zIndexValue$.asObservable();
+
   constructor(
     @Inject(Application) private application: ApplicationManifest,
     private desktopService: DesktopService,
@@ -57,21 +59,12 @@ export class WindowService {
     activatedRoute.firstChild!.url.subscribe(v => console.log(v));
   }
 
-  private setParams(params: Params) {
-    this.fullscreenValue$.next(params['fullscreen'] === 'true');
-    this.heightValue$.next(parseInt(params['height']));
-    this.widthValue$.next(parseInt(params['width']))
-    this.yValue$.next(parseInt(params['y']))
-    this.xValue$.next(parseInt(params['x']));
-    this.zIndexValue$.next(parseInt(params['zIndex']));
-  }
-
   move({
-   distanceX,
-   distanceY,
-   offsetWidth,
-   offsetHeight
-  }: ChangePosition) {
+         distanceX,
+         distanceY,
+         offsetWidth,
+         offsetHeight
+       }: ChangePosition) {
     const x = this.xValue$.getValue() + distanceX;
     const y = this.yValue$.getValue() + distanceY;
     const rx = Math.max(Math.min(x, window.innerWidth - offsetWidth), 0)
@@ -97,7 +90,7 @@ export class WindowService {
     ])
   }
 
-  resize({ width, height }: Size) {
+  resize({width, height}: Size) {
     this.navigate([
       this.fullscreenValue$.getValue(),
       this.xValue$.getValue(),
@@ -140,5 +133,14 @@ export class WindowService {
       this.heightValue$.getValue(),
       this.desktopService.getIndex(this.id)
     ])
+  }
+
+  private setParams(params: Params) {
+    this.fullscreenValue$.next(params['fullscreen'] === 'true');
+    this.heightValue$.next(parseInt(params['height']));
+    this.widthValue$.next(parseInt(params['width']))
+    this.yValue$.next(parseInt(params['y']))
+    this.xValue$.next(parseInt(params['x']));
+    this.zIndexValue$.next(parseInt(params['zIndex']));
   }
 }

@@ -1,11 +1,25 @@
 <nz-page-header>
   <nz-page-header-title>Pool</nz-page-header-title>
 </nz-page-header>
-<nz-layout>
-  <nz-statistic [nzTitle]="'Miners Online'" [nzValue]="2"></nz-statistic>
-  <nz-statistic [nzTitle]="'Miners Online'" [nzValue]="2"></nz-statistic>
-  <nz-statistic [nzTitle]="'Miners Online'" [nzValue]="2"></nz-statistic>
-  <nz-statistic [nzTitle]="'Miners Online'" [nzValue]="2"></nz-statistic>
-  <nz-statistic [nzTitle]="'Miners Online'" [nzValue]="2"></nz-statistic>
-  <nz-statistic [nzTitle]="'Miners Online'" [nzValue]="2"></nz-statistic>
-</nz-layout>
+<div class="container">
+  <nz-card
+    [nzBordered]="false"
+  >
+    <ldr-pool-etc-stats>
+      <ng-template let-data poolEtcStats>
+        <div nz-card-grid>
+          <nz-statistic [nzValue]="(data.hashrate | number)!" [nzTitle]="'Hashrate'"></nz-statistic>
+        </div>
+        <div nz-card-grid>
+          <nz-statistic [nzValue]="(data.epoch | number: '1.0-0') + ' / ' + (data.dagSize | number)" [nzTitle]="'Epoch / DAG size'"></nz-statistic>
+        </div>
+
+      </ng-template>
+    </ldr-pool-etc-stats>
+    <ldr-pool-etc-stats>
+      <ng-template let-data poolEtcStats>
+        <chart [options]="data | poolInformationChart"></chart>
+      </ng-template>
+    </ldr-pool-etc-stats>
+  </nz-card>
+</div>

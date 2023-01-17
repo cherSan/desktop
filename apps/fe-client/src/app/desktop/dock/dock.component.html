@@ -1,10 +1,10 @@
 <div class="content">
   <div
-    class="application"
-    *ngFor="let application of applications"
     (click)="openApplication(application)"
+    *ngFor="let application of applications"
     [class.application-active]="(activeApplications$ | async)![application.id]"
+    class="application"
   >
-      <img nz-image [nzDisablePreview]="true" [nzSrc]="application.icon">
+    <img [nzDisablePreview]="true" [nzSrc]="application.icon" nz-image>
   </div>
 </div>

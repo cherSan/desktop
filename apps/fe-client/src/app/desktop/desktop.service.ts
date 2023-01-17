@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject, Subject} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ApplicationManifest} from "@miner/applications";
@@ -10,19 +10,19 @@ type ActiveApplications = {
 @Injectable()
 export class DesktopService {
   public navigate: Promise<boolean> = Promise.resolve(true);
-
+  public readonly change: Subject<void> = new Subject<void>();
+  public readonly level: ActivatedRoute;
   private windows: (string | undefined)[] = new Array(100);
   private activeApplicationsValue$: BehaviorSubject<ActiveApplications> = new BehaviorSubject<ActiveApplications>({});
   public activeApplications$ = this.activeApplicationsValue$.asObservable();
 
-  public readonly change: Subject<void> = new Subject<void>();
-  public readonly level: ActivatedRoute;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
     this.level = activatedRoute.parent!;
   }
+
   activateWindow(id: string, zIndex: number = 200) {
     const currentIndex = this.windows.indexOf(id);
     if (currentIndex >= 0) {
@@ -40,9 +40,9 @@ export class DesktopService {
   }
 
   replaceArray(index: number, id: string): void {
-    if(index === -1) return;
+    if (index === -1) return;
     const newId = this.windows[index];
-    if(!newId) {
+    if (!newId) {
       this.windows[index] = id;
       return;
     }
@@ -69,7 +69,7 @@ export class DesktopService {
 
     this.navigate = this.navigate.then(() => {
       return this.router.navigate([
-        {outlets: { [application.id]: null }}
+        {outlets: {[application.id]: null}}
       ], {replaceUrl: true, relativeTo: this.level});
     }).then((r) => {
       if (currentIndex >= 0) {

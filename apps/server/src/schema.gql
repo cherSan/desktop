@@ -1,0 +1,264 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""exchange data"""
+type ExchangeData {
+  ath: String!
+  ath_change_percentage: String!
+  ath_date: String!
+  atl: String!
+  atl_change_percentage: String!
+  atl_date: String!
+  circulating_supply: String!
+  current_price: String!
+  fully_diluted_valuation: String!
+  high_24h: String!
+  id: String!
+  image: String!
+  last_updated: String!
+  low_24h: String!
+  market_cap: String!
+  market_cap_change_24h: String!
+  market_cap_change_percentage_24h: String!
+  market_cap_rank: String!
+  max_supply: String!
+  name: String!
+  price_change_24h: String!
+  price_change_percentage_24h: String!
+  roi: String!
+  symbol: String!
+  total_supply: String!
+  total_volume: String!
+}
+
+type PoolETCBlocks {
+  immature: [PoolETCBlocksInfo!]
+  immatureTotal: Float!
+  luck: [PoolETCBlocksLuck!]
+  luckCharts: [PoolETCBlocksLuckCharts!]
+  matured: [PoolETCBlocksInfo!]
+  maturedTotal: Float!
+}
+
+type PoolETCBlocksInfo {
+  difficulty: Float!
+  hash: String!
+  height: Float!
+  login: String!
+  orphan: Boolean!
+  reward: Float!
+  shareDiff: Float!
+  shares: Float!
+  timestamp: Float!
+  uncle: Boolean!
+  uncleHeight: Float!
+  worker: String!
+}
+
+type PoolETCBlocksLuck {
+  block: Float!
+  luck: Float!
+  orphanRate: Float!
+  uncleRate: Float!
+}
+
+type PoolETCBlocksLuckCharts {
+  difficulty: Float!
+  height: Float!
+  reward: Float!
+  shares: Float!
+  sharesDiff: Float!
+  x: Float!
+}
+
+type PoolETCFinders {
+  finders: [PoolETCFindersFiner!]!
+}
+
+type PoolETCFindersFiner {
+  address: String!
+  blocks: Float!
+}
+
+type PoolETCMiner {
+  currentHashrate: Float!
+  exchangedata: ExchangeData!
+  hashrate: Float!
+  id: String!
+  minerCharts: [PoolETCMinerChart!]!
+  paymentCharts: [PoolETCMinerPaymentChart!]
+  payments: [PoolETCMinerPayments!]
+  paymentsTotal: Float!
+  reward24h: Float!
+  rewards: [PoolETCMinerReward!]
+  roundShares: Float!
+  shareCharts: [PoolETCMinerShareChart!]!
+  stats: PoolETCMinerStats!
+  sumrewards: [PoolETCMinerSumReward!]!
+  workers: [PoolETCMinerWorker!]!
+  workersOffline: Float!
+  workersOnline: Float!
+  workersTotal: Float!
+}
+
+type PoolETCMinerChart {
+  minerHash: Float
+  minerLargeHash: Float
+  workerOnline: Float
+  x: Float!
+}
+
+type PoolETCMinerPaymentChart {
+  amount: Float!
+  x: Float!
+}
+
+type PoolETCMinerPayments {
+  amount: Float!
+  timestamp: Float!
+  tx: String!
+}
+
+type PoolETCMinerReward {
+  blockhash: String!
+  blockheight: Float!
+  immature: Boolean!
+  percent: Float!
+  reward: Float!
+  timestamp: Float!
+}
+
+type PoolETCMinerShareChart {
+  stale: Float!
+  valid: Float!
+  workerOnline: Float
+  x: Float!
+}
+
+type PoolETCMinerStats {
+  balance: Float!
+  blocksFound: Float!
+  immature: Float!
+  lastShare: Float!
+  lastShareDiff: Float!
+  paid: Float!
+  pending: Float!
+  roundShares: Float!
+}
+
+type PoolETCMinerSumReward {
+  blocks: Float!
+  inverval: Float!
+  name: String!
+  offset: Float!
+  reward: Float!
+}
+
+type PoolETCMinerWorker {
+  blocks: Float!
+  hr: Float!
+  hr2: Float!
+  i_per: Float!
+  id: String!
+  invalid: Float!
+  lastBeat: Float!
+  offline: Boolean!
+  s_per: Float!
+  stale: Float!
+  v_per: Float!
+  valid: Float!
+  w_stat: Float!
+  w_stat_s: Float!
+}
+
+"""Miners List"""
+type PoolETCMiners {
+  hashrate: Float!
+  miners: [PoolETCMinersMiner!]!
+  minersTotal: Float!
+  now: Float!
+}
+
+"""Miner Information"""
+type PoolETCMinersMiner {
+  blocks: Float!
+  hr: Float!
+  id: String!
+  lastBeat: Float!
+  offline: Boolean!
+}
+
+type PoolETCPayments {
+  payments: [PoolETCPaymentsPayment!]!
+  paymentsTotal: Float!
+}
+
+type PoolETCPaymentsPayment {
+  address: String!
+  amount: Float!
+  timestamp: Float!
+  tx: String!
+}
+
+"""stats from remote server model"""
+type PoolETCStats {
+  bestNode: PoolETCStatsNode!
+  candidatesTotal: Float!
+  dagSize: Float!
+  epoch: Float!
+  exchangedata: ExchangeData!
+  hashrate: Float!
+  immatureTotal: Float!
+  maturedTotal: Float!
+  minersTotal: Float!
+  netCharts: [PoolETCStatsChart!]!
+  nextEpoch: Float!
+  nodes: [PoolETCStatsNode!]!
+  now: Float!
+  offsetEpoch: Float!
+  poolCharts: [PoolETCStatsChart!]!
+  poolLuck: Float!
+  stats: PoolETCStatsStat!
+}
+
+"""node stats"""
+type PoolETCStatsChart {
+  x: Float!
+  y: Float!
+}
+
+"""node stats"""
+type PoolETCStatsNode {
+  blocktime: Float!
+  difficulty: Float!
+  hashrate: Float!
+  height: Float!
+  lastBeat: Float!
+  name: String!
+}
+
+"""node stats"""
+type PoolETCStatsStat {
+  lastBlockFound: Float!
+  nShares: Float!
+  roundShares: Float!
+}
+
+type Query {
+  poolEtcBlocks: PoolETCBlocks!
+  poolEtcFinders: PoolETCFinders!
+  poolEtcMiner(id: String!): PoolETCMiner!
+  poolEtcMiners: PoolETCMiners!
+  poolEtcPayments: PoolETCPayments!
+  poolEtcStats: PoolETCStats!
+}
+
+type Subscription {
+  poolEtcBlocks: PoolETCBlocks!
+  poolEtcFinders: PoolETCFinders!
+  poolEtcMiner(id: String!): PoolETCMiner!
+  poolEtcMiners: PoolETCMiners!
+  poolEtcPayments: PoolETCPayments!
+  poolEtcStats: PoolETCStats!
+}

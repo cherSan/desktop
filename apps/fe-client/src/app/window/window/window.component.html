@@ -1,50 +1,50 @@
 <div
+  (cdkDragEnded)="onDragEnd($event)"
+  (mousedown)="activate()"
+  (nzResizeEnd)="onResize($event)"
   *ngIf="!hide; else hideTpl"
   [@enterAnimation]="true"
-  class="window"
-  cdkDrag
-  cdkDragBoundary="cl-desktop"
-  nz-resizable
-  nzPreview
-  [class.fullscreen]="(fullscreen$ | async)!"
-  [class.active]="(zIndex$ | async)! === 200"
-  [nzDisabled]="(fullscreen$ | async)!"
   [cdkDragDisabled]="(fullscreen$ | async)!"
-  [nzBounds]="'window'"
-  [nzMaxHeight]="maxHeight"
-  [nzMinHeight]="minHeight || 200"
-  [nzMaxWidth]="maxWidth"
-  [nzMinWidth]="minWidth || 300"
   [cdkDragFreeDragPosition]="{x: (x$ | async)!, y: (y$ | async)!}"
+  [class.active]="(zIndex$ | async)! === 200"
+  [class.fullscreen]="(fullscreen$ | async)!"
+  [nzBounds]="'window'"
+  [nzDisabled]="(fullscreen$ | async)!"
+  [nzMaxHeight]="maxHeight"
+  [nzMaxWidth]="maxWidth"
+  [nzMinHeight]="minHeight || 200"
+  [nzMinWidth]="minWidth || 300"
+  [style.height.px]="(height$ | async)!"
   [style.left.px]="0"
   [style.top.px]="0"
   [style.width.px]="(width$ | async)!"
-  [style.height.px]="(height$ | async)!"
   [style.z-index]="(zIndex$ | async)!"
-  (nzResizeEnd)="onResize($event)"
-  (cdkDragEnded)="onDragEnd($event)"
-  (mousedown)="activate()"
+  cdkDrag
+  cdkDragBoundary="cl-desktop"
+  class="window"
+  nz-resizable
+  nzPreview
 >
   <nz-resize-handles></nz-resize-handles>
   <div class="window-container">
     <div
-      class="window-header"
       cdkDragHandle
+      class="window-header"
     >
       <div class="window-header--title">{{name}}</div>
       <div class="window-header--action">
         <nz-button-group [nzSize]="'small'">
-          <button nz-button nzType="link" (click)="hideWindow(true)">
-            <span nz-icon nzType="minus" nzTheme="outline"></span>
+          <button (click)="hideWindow(true)" nz-button nzType="link">
+            <span nz-icon nzTheme="outline" nzType="minus"></span>
           </button>
-          <button nz-button nzType="link" *ngIf="(fullscreen$ | async)" (click)="setFullscreen(false)">
-            <span nz-icon nzType="fullscreen-exit" nzTheme="outline"></span>
+          <button (click)="setFullscreen(false)" *ngIf="(fullscreen$ | async)" nz-button nzType="link">
+            <span nz-icon nzTheme="outline" nzType="fullscreen-exit"></span>
           </button>
-          <button nz-button nzType="link" *ngIf="!(fullscreen$ | async)" (click)="setFullscreen(true)">
-            <span nz-icon nzType="fullscreen" nzTheme="outline"></span>
+          <button (click)="setFullscreen(true)" *ngIf="!(fullscreen$ | async)" nz-button nzType="link">
+            <span nz-icon nzTheme="outline" nzType="fullscreen"></span>
           </button>
-          <button nz-button nzType="link" (click)="close()">
-            <span nz-icon nzType="close" nzTheme="outline"></span>
+          <button (click)="close()" nz-button nzType="link">
+            <span nz-icon nzTheme="outline" nzType="close"></span>
           </button>
         </nz-button-group>
       </div>
@@ -56,22 +56,22 @@
 </div>
 <ng-template #hideTpl>
   <div
+    (mousedown)="activate()"
+    [cdkDragFreeDragPosition]="{x: (x$ | async)!, y: (y$ | async)!}"
+    [style.z-index]="(zIndex$ | async)!"
     cdkDrag
     cdkDragBoundary="cl-desktop"
     class="hide"
-    (mousedown)="activate()"
-    [style.z-index]="(zIndex$ | async)!"
-    [cdkDragFreeDragPosition]="{x: (x$ | async)!, y: (y$ | async)!}"
   >
     <div class="hide--title">
       {{name}}
     </div>
     <nz-button-group [nzSize]="'small'">
-      <button nz-button nzType="link" (click)="hideWindow(false)">
-        <span nz-icon nzType="plus" nzTheme="outline"></span>
+      <button (click)="hideWindow(false)" nz-button nzType="link">
+        <span nz-icon nzTheme="outline" nzType="plus"></span>
       </button>
-      <button nz-button nzType="link" (click)="close()">
-        <span nz-icon nzType="close" nzTheme="outline"></span>
+      <button (click)="close()" nz-button nzType="link">
+        <span nz-icon nzTheme="outline" nzType="close"></span>
       </button>
     </nz-button-group>
   </div>

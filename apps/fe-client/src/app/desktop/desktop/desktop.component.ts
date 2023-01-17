@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {DesktopService} from "../desktop.service";
 import {ApplicationsService} from "../../applications/applications.service";
 import {ApplicationManifest} from "@miner/applications";
@@ -11,6 +11,7 @@ import {ApplicationManifest} from "@miner/applications";
 })
 export class DesktopComponent {
   applications: ApplicationManifest[]
+
   constructor(
     private desktopService: DesktopService,
     private applicationsService: ApplicationsService

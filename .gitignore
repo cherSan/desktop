@@ -40,3 +40,4 @@ Thumbs.db
 
 .angular
 /error.log
+/libs/graph-ql-client/src/lib/graph-ql.service.ts

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {RouterModule} from "@angular/router";
 import {ProgramsComponent} from "./programs/programs.component";
 
@@ -15,4 +15,5 @@ import {ProgramsComponent} from "./programs/programs.component";
     ])
   ]
 })
-export class ProgramsModule {}
+export class ProgramsModule {
+}

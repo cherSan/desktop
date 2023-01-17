@@ -1,9 +1,9 @@
-import { NgModule} from '@angular/core';
-import { Route, RouterModule} from "@angular/router";
-import { WindowComponent } from './window/window.component';
+import {NgModule} from '@angular/core';
+import {Route, RouterModule} from "@angular/router";
+import {WindowComponent} from './window/window.component';
 import {AsyncPipe, NgIf} from "@angular/common";
 import {NzCardModule} from "ng-zorro-antd/card";
-import { ModalWindowComponent } from './modal-window/modal-window.component';
+import {ModalWindowComponent} from './modal-window/modal-window.component';
 import {CdkDrag, CdkDragHandle} from "@angular/cdk/drag-drop";
 import {NzIconModule} from "ng-zorro-antd/icon";
 import {NzButtonModule} from "ng-zorro-antd/button";
@@ -14,7 +14,7 @@ import {ApplicationManifest} from "@miner/applications";
 let apps = 0;
 export const window = (am: ApplicationManifest): Route => {
   apps++;
-  const position = apps%20*10;
+  const position = apps % 20 * 10;
   if (am.type === 'window') {
     return {
       path: am.type,
@@ -57,4 +57,5 @@ export const window = (am: ApplicationManifest): Route => {
     NzResizableModule,
   ]
 })
-export class WindowModule {}
+export class WindowModule {
+}

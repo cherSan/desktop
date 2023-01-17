@@ -1,46 +1,46 @@
 <nz-tabset
-  [nzLinkRouter]="true"
-  [nzTabPosition]="'left'"
-  [nzSize]="'large'"
   [nzAnimated]="true"
+  [nzLinkRouter]="true"
+  [nzSize]="'large'"
+  [nzTabBarExtraContent]="extraTpl"
   [nzTabBarGutter]="10"
   [nzTabBarStyle]="{width: '140px'}"
-  [nzTabBarExtraContent]="extraTpl"
+  [nzTabPosition]="'left'"
 >
   <ng-template #extraTpl>
     GOD BLESS US
   </ng-template>
   <nz-tab>
-    <a *nzTabLink nz-tab-link [routerLink]="['pool']" [relativeTo]="relativeTo">
-      <span nz-icon nzType="cluster" nzTheme="outline"></span>
+    <a *nzTabLink [relativeTo]="relativeTo" [routerLink]="['pool']" nz-tab-link>
+      <span nz-icon nzTheme="outline" nzType="cluster"></span>
       Pool
     </a>
     <router-outlet></router-outlet>
   </nz-tab>
   <nz-tab>
-    <a *nzTabLink nz-tab-link [routerLink]="['blocks']" [relativeTo]="relativeTo">
-      <span nz-icon nzType="block" nzTheme="outline"></span>
+    <a *nzTabLink [relativeTo]="relativeTo" [routerLink]="['blocks']" nz-tab-link>
+      <span nz-icon nzTheme="outline" nzType="block"></span>
       Blocks
     </a>
     <router-outlet></router-outlet>
   </nz-tab>
   <nz-tab>
-    <a *nzTabLink nz-tab-link [routerLink]="['payments']" [relativeTo]="relativeTo">
-      <span nz-icon nzType="dollar" nzTheme="outline"></span>
+    <a *nzTabLink [relativeTo]="relativeTo" [routerLink]="['payments']" nz-tab-link>
+      <span nz-icon nzTheme="outline" nzType="dollar"></span>
       Payments
     </a>
     <router-outlet></router-outlet>
   </nz-tab>
   <nz-tab>
-    <a *nzTabLink nz-tab-link [routerLink]="['miners']" [relativeTo]="relativeTo">
-      <span nz-icon nzType="team" nzTheme="outline"></span>
+    <a *nzTabLink [relativeTo]="relativeTo" [routerLink]="['miners']" nz-tab-link>
+      <span nz-icon nzTheme="outline" nzType="team"></span>
       Miners
     </a>
     <router-outlet></router-outlet>
   </nz-tab>
   <nz-tab>
-    <a *nzTabLink nz-tab-link [routerLink]="['finders']" [relativeTo]="relativeTo">
-      <span nz-icon nzType="compass" nzTheme="outline"></span>
+    <a *nzTabLink [relativeTo]="relativeTo" [routerLink]="['finders']" nz-tab-link>
+      <span nz-icon nzTheme="outline" nzType="compass"></span>
       Finders
     </a>
   </nz-tab>

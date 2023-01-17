@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Route, RouterModule, ROUTES} from "@angular/router";
-import { DesktopComponent } from './desktop/desktop.component';
+import {DesktopComponent} from './desktop/desktop.component';
 import {DockComponent} from "./dock/dock.component";
 import {ApplicationsModule} from "../applications/applications.module";
 import {ApplicationsService} from "../applications/applications.service";
@@ -52,4 +52,5 @@ function applicationsFactory(applicationsService: ApplicationsService): Route[] 
     }
   ]
 })
-export class DesktopModule { }
+export class DesktopModule {
+}

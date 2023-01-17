@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PoolComponent } from './pool.component';
+import {PoolComponent} from './pool.component';
 
 describe('PoolComponent', () => {
   let component: PoolComponent;
@@ -8,9 +8,9 @@ describe('PoolComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PoolComponent ]
+      declarations: [PoolComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(PoolComponent);
     component = fixture.componentInstance;
