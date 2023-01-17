@@ -1,0 +1,78 @@
+<div
+  *ngIf="!hide; else hideTpl"
+  [@enterAnimation]="true"
+  class="window"
+  cdkDrag
+  cdkDragBoundary="cl-desktop"
+  nz-resizable
+  nzPreview
+  [class.fullscreen]="(fullscreen$ | async)!"
+  [class.active]="(zIndex$ | async)! === 200"
+  [nzDisabled]="(fullscreen$ | async)!"
+  [cdkDragDisabled]="(fullscreen$ | async)!"
+  [nzBounds]="'window'"
+  [nzMaxHeight]="maxHeight"
+  [nzMinHeight]="minHeight || 200"
+  [nzMaxWidth]="maxWidth"
+  [nzMinWidth]="minWidth || 300"
+  [cdkDragFreeDragPosition]="{x: (x$ | async)!, y: (y$ | async)!}"
+  [style.left.px]="0"
+  [style.top.px]="0"
+  [style.width.px]="(width$ | async)!"
+  [style.height.px]="(height$ | async)!"
+  [style.z-index]="(zIndex$ | async)!"
+  (nzResizeEnd)="onResize($event)"
+  (cdkDragEnded)="onDragEnd($event)"
+  (mousedown)="activate()"
+>
+  <nz-resize-handles></nz-resize-handles>
+  <div class="window-container">
+    <div
+      class="window-header"
+      cdkDragHandle
+    >
+      <div class="window-header--title">{{name}}</div>
+      <div class="window-header--action">
+        <nz-button-group [nzSize]="'small'">
+          <button nz-button nzType="link" (click)="hideWindow(true)">
+            <span nz-icon nzType="minus" nzTheme="outline"></span>
+          </button>
+          <button nz-button nzType="link" *ngIf="(fullscreen$ | async)" (click)="setFullscreen(false)">
+            <span nz-icon nzType="fullscreen-exit" nzTheme="outline"></span>
+          </button>
+          <button nz-button nzType="link" *ngIf="!(fullscreen$ | async)" (click)="setFullscreen(true)">
+            <span nz-icon nzType="fullscreen" nzTheme="outline"></span>
+          </button>
+          <button nz-button nzType="link" (click)="close()">
+            <span nz-icon nzType="close" nzTheme="outline"></span>
+          </button>
+        </nz-button-group>
+      </div>
+    </div>
+    <div class="window-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+<ng-template #hideTpl>
+  <div
+    cdkDrag
+    cdkDragBoundary="cl-desktop"
+    class="hide"
+    (mousedown)="activate()"
+    [style.z-index]="(zIndex$ | async)!"
+    [cdkDragFreeDragPosition]="{x: (x$ | async)!, y: (y$ | async)!}"
+  >
+    <div class="hide--title">
+      {{name}}
+    </div>
+    <nz-button-group [nzSize]="'small'">
+      <button nz-button nzType="link" (click)="hideWindow(false)">
+        <span nz-icon nzType="plus" nzTheme="outline"></span>
+      </button>
+      <button nz-button nzType="link" (click)="close()">
+        <span nz-icon nzType="close" nzTheme="outline"></span>
+      </button>
+    </nz-button-group>
+  </div>
+</ng-template>

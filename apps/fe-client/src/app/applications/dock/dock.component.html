@@ -1,0 +1,13 @@
+<a  *ngFor="let application of applications" [routerLink]="application.routerLink">123123213</a>
+<div class="content">
+  <div
+    class="application"
+    *ngFor="let application of applications"
+    (click)="open(application)"
+    [routerLink]="application.routerLink"
+    [routerLinkActive]="'application-active'"
+  >
+    {{application.routerLink | json}}
+      <img nz-image [nzDisablePreview]="true" [nzSrc]="application.icon">
+  </div>
+</div>

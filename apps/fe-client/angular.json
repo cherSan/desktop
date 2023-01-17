@@ -1,0 +1,17 @@
+{
+  "$schema": "../../node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "projects": {
+    "fe-client": {
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "cl",
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    }
+  }
+}

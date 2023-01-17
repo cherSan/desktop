@@ -1,0 +1,11 @@
+<div class="overlay" (click)="close()">
+  <div
+    [@enterAnimation]="true"
+    class="modal-window"
+    (click)="card($event)"
+    [style.width.px]="(data$ | async)!['width'] || 500"
+    [style.height.px]="(data$ | async)!['height'] || 300"
+  >
+    <router-outlet></router-outlet>
+  </div>
+</div>

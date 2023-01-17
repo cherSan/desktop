@@ -1,0 +1,7 @@
+<router-outlet
+  *ngFor="let application of applications"
+  [name]="application.id"
+  (activate)="addApplication(application)"
+  (deactivate)="removeApplication(application)"
+></router-outlet>
+<cl-dock [applications]="applications"></cl-dock>
